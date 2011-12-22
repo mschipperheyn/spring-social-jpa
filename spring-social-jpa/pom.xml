@@ -64,8 +64,9 @@
   		<scope>compile</scope>
   	</dependency>
   </dependencies>
-<plugins>
-  <plugin>
+  <build>
+	<plugins>
+  	     <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.0.2</version>
                 <configuration>
@@ -73,5 +74,6 @@
                     <target>1.5</target>
                 </configuration>
             </plugin> 
-</plugins>
+	</plugins>
+   </build>
 </project>
