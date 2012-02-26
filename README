@@ -1,0 +1,1 @@
+Spring Social JPA is a plugin for Spring Social that allows you to use JPA as a basis for your repository as opposed to straight JDBC.
