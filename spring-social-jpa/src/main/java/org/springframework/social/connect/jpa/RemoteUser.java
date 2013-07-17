@@ -1,9 +1,11 @@
 package org.springframework.social.connect.jpa;
 
+import org.springframework.social.UserIdSource;
+
 /*
  * @author Marc Schipperheyn marc@orangebits.nl
  */
-public interface RemoteUser {
+public interface RemoteUser extends UserIdSource{
 
 	public String getUserId();
 	
