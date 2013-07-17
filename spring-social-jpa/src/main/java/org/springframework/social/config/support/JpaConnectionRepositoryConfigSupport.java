@@ -21,7 +21,7 @@ public abstract class JpaConnectionRepositoryConfigSupport extends AbstractConne
 	private BeanDefinition registerUsersConnectionRepositoryBeanDefinition(BeanDefinitionRegistry registry, String usersConnectionRepositoryId, 
 			String connectionFactoryLocatorRef, String jpaTemplate, String encryptorRef, String connectionSignUpRef) {
 		if (logger.isDebugEnabled()) {
-			logger.debug("Registering JdbcUsersConnectionRepository bean");
+			logger.debug("Registering JpaUsersConnectionRepository bean");
 		}				
 		BeanDefinitionBuilder usersConnectionRepositoryBeanBuilder = BeanDefinitionBuilder.genericBeanDefinition(JpaUsersConnectionRepository.class)
 				.addConstructorArgReference(jpaTemplate)
