@@ -138,6 +138,7 @@ public class JpaConnectionRepository implements ConnectionRepository {
 		}
 	}
 	
+	@Transactional
 	public void updateConnection(Connection<?> connection) {
 		ConnectionData data = connection.createData();
 		
