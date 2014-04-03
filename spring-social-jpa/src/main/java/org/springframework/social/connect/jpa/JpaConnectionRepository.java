@@ -71,7 +71,7 @@ public class JpaConnectionRepository implements ConnectionRepository {
 	}
 	
 	public MultiValueMap<String, Connection<?>> findConnectionsToUsers(MultiValueMap<String, String> providerUsers) {
-		if (providerUsers.isEmpty()) {
+		if (providerUsers == null || providerUsers.isEmpty()) {
 			throw new IllegalArgumentException("Unable to execute find: no providerUsers provided");
 		}		
 		
@@ -132,7 +132,19 @@ public class JpaConnectionRepository implements ConnectionRepository {
 			ConnectionData data = connection.createData();
 			int rank = jpaTemplate.getRank(userId, data.getProviderId()) ;
 			
-			jpaTemplate.createRemoteUser(userId, data.getProviderId(), data.getProviderUserId(), rank, data.getDisplayName(), data.getProfileUrl(), data.getImageUrl(), encrypt(data.getAccessToken()), encrypt(data.getSecret()), encrypt(data.getRefreshToken()), data.getExpireTime());
+			jpaTemplate.createRemoteUser(
+				userId, 
+				data.getProviderId(), 
+				data.getProviderUserId(), 
+				rank, 
+				data.getDisplayName(), 
+				data.getProfileUrl(), 
+				data.getImageUrl(), 
+				encrypt(data.getAccessToken()), 
+				encrypt(data.getSecret()),
+				encrypt(data.getRefreshToken()), 
+				data.getExpireTime()
+			);
 		} catch (DuplicateKeyException e) {
 			throw new DuplicateConnectionException(connection.getKey());
 		}
@@ -192,8 +204,17 @@ public class JpaConnectionRepository implements ConnectionRepository {
 		}
 		
 		private ConnectionData mapConnectionData(RemoteUser socialUser){
-			return new ConnectionData(socialUser.getProviderId(), socialUser.getProviderUserId(), socialUser.getDisplayName(), socialUser.getProfileUrl(), socialUser.getImageUrl(),
-					decrypt(socialUser.getAccessToken()), decrypt(socialUser.getSecret()), decrypt(socialUser.getRefreshToken()), expireTime(socialUser.getExpireTime()));
+			return new ConnectionData(
+				socialUser.getProviderId(), 
+				socialUser.getProviderUserId(), 
+				socialUser.getDisplayName(), 
+				socialUser.getProfileUrl(), 
+				socialUser.getImageUrl(),
+				decrypt(socialUser.getAccessToken()), 
+				decrypt(socialUser.getSecret()),
+				decrypt(socialUser.getRefreshToken()), 
+				expireTime(socialUser.getExpireTime()
+			));
 		}
 		
 		private String decrypt(String encryptedText) {
