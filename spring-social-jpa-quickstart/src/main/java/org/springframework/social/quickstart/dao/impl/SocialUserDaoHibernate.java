@@ -49,7 +49,7 @@ public class SocialUserDaoHibernate extends HibernateDaoSupport implements Socia
 				.createCriteria(SocialUser.class).createAlias("user", "user")
 				.add(Restrictions.eq("user.email", userId))
 				.addOrder(Order.desc("providerId"))
-				.addOrder(Order.desc("rank")).list();
+				.addOrder(Order.asc("rank")).list();
 	}
 
 	public List<RemoteUser> getAll(String userId, String providerId) {
@@ -57,7 +57,7 @@ public class SocialUserDaoHibernate extends HibernateDaoSupport implements Socia
 				.createCriteria(SocialUser.class).createAlias("user", "user")
 				.add(Restrictions.eq("user.email", userId))
 				.add(Restrictions.eq("providerId", providerId))
-				.addOrder(Order.desc("rank")).list();
+				.addOrder(Order.asc("rank")).list();
 	}
 
 	public List<RemoteUser> getAll(
@@ -142,7 +142,7 @@ public class SocialUserDaoHibernate extends HibernateDaoSupport implements Socia
 				.createCriteria(SocialUser.class).createAlias("user", "user")
 				.add(Restrictions.eq("user.email", userId))
 				.add(Restrictions.eq("providerId", providerId))
-				.add(Restrictions.eq("rank", 1)).list();
+				.addOrder(Order.asc("rank")).list();
 	}
 
 	public int getRank(String userId, String providerId) {

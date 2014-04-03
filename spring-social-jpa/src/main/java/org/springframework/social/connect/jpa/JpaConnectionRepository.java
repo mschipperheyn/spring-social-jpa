@@ -167,11 +167,13 @@ public class JpaConnectionRepository implements ConnectionRepository {
 			su = jpaTemplate.save(su);
 		}
 	}
-
+	
+	@Transactional
 	public void removeConnections(String providerId) {
 		jpaTemplate.remove(userId,providerId);
 	}
 
+	@Transactional
 	public void removeConnection(ConnectionKey connectionKey) {
 		jpaTemplate.remove(userId,connectionKey.getProviderId(), connectionKey.getProviderUserId());		
 	}
