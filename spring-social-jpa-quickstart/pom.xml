@@ -1,8 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.springframework.social</groupId>
-  <artifactId>jpa</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <artifactId>jpa-example</artifactId>
+  <version>0.0.2</version>
   <repositories>
   	<repository>
   		<id>org.springframework.maven.milestone</id>
@@ -52,14 +52,14 @@
   	<dependency>
   		<groupId>org.springframework.social</groupId>
   		<artifactId>spring-social-core</artifactId>
-  		<version>1.1.0.BUILD-SNAPSHOT</version>
+  		<version>1.1.6.RELEASE</version>
   		<type>jar</type>
   		<scope>compile</scope>
   	</dependency>
   	<dependency>
   		<groupId>org.springframework.security</groupId>
   		<artifactId>spring-security-crypto</artifactId>
-  		<version>3.1.0.RC2.crypto</version>
+  		<version>3.1.7.RELEASE</version>
   		<type>jar</type>
   		<scope>compile</scope>
   	</dependency>
